@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>Prog13_javascript_api_database</groupId>
-	<artifactId>Prog13_javascript_api_database.app</artifactId>
+	<artifactId>Prog14_javascript_api_database_Countries</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>

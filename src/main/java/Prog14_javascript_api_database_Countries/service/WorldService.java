@@ -1,12 +1,11 @@
-package Prog13_javascript_api_database.service;
+package Prog14_javascript_api_database_Countries.service;
 
-import Prog13_javascript_api_database.model.City;
-import Prog13_javascript_api_database.model.CountriesStatesCities;
-import Prog13_javascript_api_database.model.Country;
-import Prog13_javascript_api_database.model.State;
-import Prog13_javascript_api_database.repositories.ICityRepository;
-import Prog13_javascript_api_database.repositories.ICountryRepository;
-import Prog13_javascript_api_database.repositories.IStateRepository;
+import Prog14_javascript_api_database_Countries.model.City;
+import Prog14_javascript_api_database_Countries.model.Country;
+import Prog14_javascript_api_database_Countries.model.State;
+import Prog14_javascript_api_database_Countries.repositories.ICityRepository;
+import Prog14_javascript_api_database_Countries.repositories.ICountryRepository;
+import Prog14_javascript_api_database_Countries.repositories.IStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

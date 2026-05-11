@@ -1,9 +1,8 @@
-package Prog13_javascript_api_database.service;
+package Prog14_javascript_api_database_Countries.service;
 
-import Prog13_javascript_api_database.model.City;
-import Prog13_javascript_api_database.model.CountriesStatesCities;
-import Prog13_javascript_api_database.model.Country;
-import Prog13_javascript_api_database.model.State;
+import Prog14_javascript_api_database_Countries.model.City;
+import Prog14_javascript_api_database_Countries.model.Country;
+import Prog14_javascript_api_database_Countries.model.State;
 
 import java.util.List;
 

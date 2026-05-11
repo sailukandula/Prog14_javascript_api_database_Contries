@@ -1,6 +1,6 @@
-package Prog13_javascript_api_database.repositories;
+package Prog14_javascript_api_database_Countries.repositories;
 
-import Prog13_javascript_api_database.model.State;
+import Prog14_javascript_api_database_Countries.model.State;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package Prog13_javascript_api_database;
+package Prog14_javascript_api_database_Countries;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

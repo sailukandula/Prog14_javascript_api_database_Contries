@@ -1,9 +1,9 @@
-package Prog13_javascript_api_database.controller;
+package Prog14_javascript_api_database_Countries.controller;
 
-import Prog13_javascript_api_database.model.City;
-import Prog13_javascript_api_database.model.Country;
-import Prog13_javascript_api_database.model.State;
-import Prog13_javascript_api_database.service.WorldService;
+import Prog14_javascript_api_database_Countries.model.City;
+import Prog14_javascript_api_database_Countries.model.Country;
+import Prog14_javascript_api_database_Countries.model.State;
+import Prog14_javascript_api_database_Countries.service.WorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

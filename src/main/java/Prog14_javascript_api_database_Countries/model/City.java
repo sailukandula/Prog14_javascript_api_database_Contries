@@ -1,4 +1,4 @@
-package Prog13_javascript_api_database.model;
+package Prog14_javascript_api_database_Countries.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
