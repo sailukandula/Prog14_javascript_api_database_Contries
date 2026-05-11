@@ -1,0 +1,85 @@
+<html>
+<head>
+  <!-- Requiremnet: all the countries should displayed in countries dropdown and the first country states should be displayed in states dropdown and then first state cities should be displayed in cities dropdown. -->
+  <title>World Dropdowns</title>
+
+  <script>
+
+    function loadCountries() {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/countryList");
+
+      http.onload = function () {
+        let countries = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("countryDropdown");
+        dropdown.innerHTML = "";
+
+        countries.forEach(c => {
+          dropdown.innerHTML += `<option value="${c.countryId}">${c.country}</option>`;
+        });
+
+        if (countries.length > 0) {
+          loadStates(countries[0].countryId);
+        }
+      };
+
+      http.send();
+    }
+
+    function loadStates(countryId) {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/stateList?countryId=" + countryId);
+
+      http.onload = function () {
+        let states = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("stateDropdown");
+        dropdown.innerHTML = "";
+
+        states.forEach(s => {
+          dropdown.innerHTML += `<option value="${s.stateId}">${s.state}</option>`;
+        });
+
+        if (states.length > 0) {
+          loadCities(states[0].stateId);
+        }
+      };
+
+      http.send();
+    }
+
+
+    function loadCities(stateId) {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/cityList?stateId=" + stateId);
+
+      http.onload = function () {
+        let cities = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("cityDropdown");
+        dropdown.innerHTML = "";
+
+        cities.forEach(c => {
+          dropdown.innerHTML += `<option value="${c.cityId}">${c.city}</option>`;
+        });
+      };
+
+      http.send();
+    }
+
+  </script>
+</head>
+
+<body onload="loadCountries()">
+
+  <h2>World Dropdowns</h2>
+
+  <label>Countries:</label> <select id="countryDropdown" onchange="loadStates(this.value, true)"></select><br>
+
+  <label>States:</label> <select id="stateDropdown" onchange="loadCities(this.value)"></select><br>
+
+  <label>Cities:</label> <select id="cityDropdown"></select>
+
+</body>
+</html>
