@@ -1,5 +1,4 @@
 package Prog14_javascript_api_database_Countries.service;
-
 import Prog14_javascript_api_database_Countries.model.City;
 import Prog14_javascript_api_database_Countries.model.Country;
 import Prog14_javascript_api_database_Countries.model.State;
@@ -8,7 +7,6 @@ import Prog14_javascript_api_database_Countries.repositories.ICountryRepository;
 import Prog14_javascript_api_database_Countries.repositories.IStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
