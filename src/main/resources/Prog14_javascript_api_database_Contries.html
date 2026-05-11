@@ -1,0 +1,147 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript API Countries</title>
+  <script>
+    function createState() {
+      var httprequest = new XMLHttpRequest();
+      httprequest.open("post", "http://localhost:8080/api/world/createState");
+      httprequest.setRequestHeader("Content-Type", "application/json");
+
+      httprequest.onload = function () {
+        console.log(httprequest.responseText);
+      }
+      var stateId = document.getElementById("stateId").value;
+      var state = document.getElementById("state").value;
+      var countryId = document.getElementById("countryId").value;
+
+
+      const data = JSON.stringify({ stateId: stateId, state: state, countryId: countryId });
+      console.log(data);
+      httprequest.send(data);
+    }
+
+    function createCity() {
+      var httprequest = new XMLHttpRequest();
+      httprequest.open("post", "http://localhost:8080/api/world/createCity");
+      httprequest.setRequestHeader("Content-Type", "application/json");
+
+      httprequest.onload = function () {
+        console.log(httprequest.responseText);
+      }
+      var cityId = document.getElementById("cityId").value;
+      var city = document.getElementById("city").value;
+      var stateId = document.getElementById("stateId").value;
+
+
+      const data = JSON.stringify({ cityId: cityId, city: city, stateId: stateId });
+      console.log(data);
+      httprequest.send(data);
+    }
+
+
+    function createCountry() {
+      var httprequest = new XMLHttpRequest();
+      httprequest.open("post", "http://localhost:8080/api/world/createCountry");
+      httprequest.setRequestHeader("Content-Type", "application/json");
+
+      httprequest.onload = function () {
+        console.log(httprequest.responseText);
+      }
+
+
+      var countryId = document.getElementById("countryId").value;
+      var country = document.getElementById("country").value;
+
+
+      const data = JSON.stringify({ countryId: countryId, country: country });
+      console.log(data);
+      httprequest.send(data);
+    }
+
+    function loadCountries() {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/countryList");
+      http.onload = function () {
+        let countries = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("countryDropdown");
+        dropdown.innerHTML = "<option value=''>Select Country</option>";
+
+        countries.forEach(c => {
+          dropdown.innerHTML += `<option value="${c.countryId}">${c.country}</option>`;
+        });
+      };
+      http.send();
+    }
+
+    function loadStates(countryId) {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/stateList?countryId=" + countryId);
+      http.onload = function () {
+        let states = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("stateDropdown");
+        dropdown.innerHTML = "<option value=''>Select State</option>";
+
+        states.forEach(s => {
+          dropdown.innerHTML += `<option value="${s.stateId}">${s.state}</option>`;
+        });
+      };
+      http.send();
+    }
+
+
+    function loadCities(stateId) {
+      var http = new XMLHttpRequest();
+      http.open("GET", "http://localhost:8080/api/world/cityList?stateId=" + stateId);
+      http.onload = function () {
+        let cities = JSON.parse(http.responseText);
+
+        let dropdown = document.getElementById("cityDropdown");
+        dropdown.innerHTML = "<option value=''>Select City</option>";
+
+        cities.forEach(c => {
+          dropdown.innerHTML += `<option value="${c.cityId}">${c.city}</option>`;
+        });
+      };
+      http.send();
+    }
+
+
+  </script>
+</head>
+
+<body>
+  <input type="text" id="countryId" placeholder="Country ID"><br>
+  <input type="text" id="country" placeholder="Country Name"><br>
+
+  <input type="text" id="stateId" placeholder="State ID"><br>
+  <input type="text" id="state" placeholder="State Name"><br>
+
+  <input type="text" id="cityId" placeholder="City ID"><br>
+  <input type="text" id="city" placeholder="City Name"><br>
+
+
+  <select id="countryDropdown" onchange="loadStates(this.value)">
+    <option value="">Select Country</option>
+  </select>
+
+  <select id="stateDropdown" onchange="loadCities(this.value)">
+    <option value="">Select State</option>
+  </select>
+
+  <select id="cityDropdown">
+    <option value="">Select City</option>
+  </select>
+
+
+  <input type="button" id="btnstate" onclick="createState()" value="CreateState">
+  <input type="button" id="btncity" onclick="createCity()" value="CreateCity">
+  <input type="button" id="btncountry" onclick="createCountry()" value="CreateCountry">
+  <input type="button" id="btn" onclick="loadCountries()" value="LoadCountries">
+</body>
+
+</html>
